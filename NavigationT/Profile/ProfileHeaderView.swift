@@ -38,7 +38,7 @@ class ProfileHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
        button.layer.cornerRadius = 20
         button.backgroundColor = .systemBlue
-        button.setTitle("Sho status", for: .normal)
+        button.setTitle("Status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowRadius = 4
@@ -72,15 +72,16 @@ class ProfileHeaderView: UIView {
             imageCat.heightAnchor.constraint(equalToConstant: 110.0),
             imageCat.widthAnchor.constraint(equalToConstant: 110.0),
             imageCat.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            imageCat.topAnchor.constraint(equalTo: topAnchor, constant: 110),
+            imageCat.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             
-            labelCat.topAnchor.constraint(equalTo: topAnchor, constant: 121),
+            labelCat.topAnchor.constraint(equalTo: topAnchor, constant: 27),
             labelCat.leadingAnchor.constraint(equalTo: imageCat.trailingAnchor, constant: 16),
             
-            muButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            muButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             muButton.topAnchor.constraint(equalTo: imageCat.bottomAnchor, constant: 16),
-            muButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            muButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             muButton.heightAnchor.constraint(equalToConstant: 50),
+            muButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -27),
             
             labelSecond.leadingAnchor.constraint(equalTo: imageCat.trailingAnchor, constant: 16),
             labelSecond.bottomAnchor.constraint(equalTo: muButton.topAnchor, constant: -34)

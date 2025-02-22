@@ -4,9 +4,10 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var profileHeaderView: ProfileHeaderView = {
+    private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
-     //   view.backgroundColor = .systemBlue
+        view.translatesAutoresizingMaskIntoConstraints = false
+     //  view.backgroundColor = .systemBlue
         
         return view
         
@@ -19,9 +20,22 @@ class ProfileViewController: UIViewController {
         title = "Профиль"
         
         view.addSubview(profileHeaderView)
+        setupContraints()
         
-        profileHeaderView.frame = view.frame
+   //     profileHeaderView.frame = view.frame
 
+    }
+    
+    private func setupContraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+            
+        ])
     }
     
  
