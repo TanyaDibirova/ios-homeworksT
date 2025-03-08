@@ -18,8 +18,8 @@ class ProfileViewController: UIViewController {
         
         view.backgroundColor = .lightGray
         title = "Профиль"
-        
         view.addSubview(profileHeaderView)
+       
         setupContraints()
         
    //     profileHeaderView.frame = view.frame

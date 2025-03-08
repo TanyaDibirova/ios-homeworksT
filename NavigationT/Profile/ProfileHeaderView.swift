@@ -48,22 +48,21 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         imageCat.image =  catImage
-        addSubview(imageCat)
-        addSubview(labelCat)
-        addSubview(labelSecond)
-        addSubview(muButton)
+       addSubview(imageCat)
+       addSubview(labelCat)
+       addSubview(labelSecond)
+       addSubview(muButton)
         setupContraints()
+    
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     private func setupContraints() {
    //     let safeAreaGuide = view.safeAreaLayoutGuide
@@ -77,9 +76,9 @@ class ProfileHeaderView: UIView {
             labelCat.topAnchor.constraint(equalTo: topAnchor, constant: 27),
             labelCat.leadingAnchor.constraint(equalTo: imageCat.trailingAnchor, constant: 16),
             
-            muButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            muButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             muButton.topAnchor.constraint(equalTo: imageCat.bottomAnchor, constant: 16),
-            muButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            muButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             muButton.heightAnchor.constraint(equalToConstant: 50),
             muButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -27),
             
