@@ -46,15 +46,10 @@ class FeedViewController: UIViewController {
     }
     
     @objc func buttonPressed() {
-        var post = Post(title: "Мой пост")
+        let post = Post(title: "Мой пост")
         let postVC = PostViewController(post: post)
         postVC.post = post
-        
         navigationController?.pushViewController(postVC, animated: true)
-           
-         
        }
-
-
 
 }
