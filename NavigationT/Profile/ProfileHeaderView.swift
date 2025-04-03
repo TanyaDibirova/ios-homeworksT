@@ -36,7 +36,7 @@ class ProfileHeaderView: UIView {
     private lazy var muButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-       button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 20
         button.backgroundColor = .systemBlue
         button.setTitle("Status", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -48,16 +48,21 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    convenience init(title: String) {
+        self.init(frame: .zero)
+        labelCat.text = title
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         imageCat.image =  catImage
-       addSubview(imageCat)
-       addSubview(labelCat)
-       addSubview(labelSecond)
-       addSubview(muButton)
+        addSubview(imageCat)
+        addSubview(labelCat)
+        addSubview(labelSecond)
+        addSubview(muButton)
         setupContraints()
-    
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -65,7 +70,7 @@ class ProfileHeaderView: UIView {
     
     
     private func setupContraints() {
-   //     let safeAreaGuide = view.safeAreaLayoutGuide
+        //     let safeAreaGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             imageCat.heightAnchor.constraint(equalToConstant: 110.0),
@@ -85,7 +90,7 @@ class ProfileHeaderView: UIView {
             labelSecond.leadingAnchor.constraint(equalTo: imageCat.trailingAnchor, constant: 16),
             labelSecond.bottomAnchor.constraint(equalTo: muButton.topAnchor, constant: -34)
             
-        
+            
             
             
             
@@ -94,6 +99,10 @@ class ProfileHeaderView: UIView {
     
     @objc func buttonPressed() {
         print("Waiting for something...")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 }
 

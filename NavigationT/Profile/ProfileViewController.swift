@@ -2,7 +2,105 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+
+
+    fileprivate let menu = Menu.make()
+    
+    private lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        
+        return table
+    }()
+ 
+    private enum CellReuseID: String {
+        case base = "PostTableViewCell_ReuseID"
+        case custom = "CustomTableViewCell_ReuseID"
+    }
+   
+
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        menu.count
+    }
+    
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseID.base.rawValue, for: indexPath
+        ) as? PostTableViewCell else {
+            fatalError("could not dequeueReusableCell")
+        }
+        cell.update(menu[indexPath.row])
+     //   cell.configure(post: menu[indexPath.row])
+        return cell
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        
+        setupView()
+        addSubviews()
+        
+        setupConstraints()
+        tuneTableView()
+        
+}
+    
+    private func setupView() {
+        view.backgroundColor = .black
+        navigationItem.title = "Нетология"
+        navigationController?.navigationBar.prefersLargeTitles = false
+
+}
+    
+    private func addSubviews() {
+        view.addSubview(tableView)
+    }
+    
+    private func setupConstraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            
+        ])
+    }
+    
+    private func tuneTableView() {
+        tableView.estimatedRowHeight = 44.0
+        
+        let headerView = ProfileHeaderView()
+        tableView.setAndLayout(headerView: headerView)
+        tableView.tableFooterView = UIView()
+        
+
+        tableView.register(
+            PostTableViewCell.self,
+                   forCellReuseIdentifier: CellReuseID.base.rawValue
+               )
+               
+        
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+}
+
+
+
+/*
     
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
@@ -37,7 +135,5 @@ class ProfileViewController: UIViewController {
             
         ])
     }
-    
  
-
-}
+ */
