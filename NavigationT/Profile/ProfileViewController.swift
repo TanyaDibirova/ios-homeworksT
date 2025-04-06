@@ -8,7 +8,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     fileprivate let menu = Menu.make()
     
     private lazy var tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView.init(
+            frame: .zero,
+            style: .grouped
+        )
         table.translatesAutoresizingMaskIntoConstraints = false
         
         return table
@@ -22,9 +25,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(
         _ tableView: UITableView,
-        numberOfRowsInSection section: Int
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        if section == 0 {
+            return ProfileHeaderView()
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+       numberOfRowsInSection section: Int
     ) -> Int {
-        menu.count
+       menu.count
     }
     
     
@@ -81,9 +95,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func tuneTableView() {
         tableView.estimatedRowHeight = 44.0
         
-        let headerView = ProfileHeaderView()
-        tableView.setAndLayout(headerView: headerView)
-        tableView.tableFooterView = UIView()
+     //   let headerView = ProfileHeaderView()
+     //   tableView.setAndLayout(headerView: headerView)
+     //   tableView.tableFooterView = UIView()
         
 
         tableView.register(
