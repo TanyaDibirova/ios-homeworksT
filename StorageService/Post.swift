@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Menu {
+public struct Menu {
     
     let author: String
     let description: String
@@ -17,7 +17,7 @@ struct Menu {
     
 }
 
-extension Menu {
+ public extension Menu {
     
     static func make() -> [Menu] {
         [
