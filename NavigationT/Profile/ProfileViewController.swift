@@ -1,11 +1,12 @@
 
 
 import UIKit
+//  import StorageService
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     
-    fileprivate let menu = Menu.make()
+    fileprivate let menu = Post.make()
     
     private lazy var tableView: UITableView = {
         let table = UITableView.init(
@@ -88,7 +89,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func setupView() {
+      #if DEBUG
         view.backgroundColor = .black
+      #else
+        view.backgroundColor = .red
+        #endif
+        
         navigationItem.title = "Нетология"
         navigationController?.navigationBar.prefersLargeTitles = false
         

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
@@ -96,8 +97,6 @@ class PostTableViewCell: UITableViewCell {
            textLabel?.backgroundColor = .clear
            detailTextLabel?.backgroundColor = .clear
            imageView?.backgroundColor = .clear
-           
-           
 
      //      accessoryView = nil
      //      accessoryType = .disclosureIndicator
@@ -139,7 +138,7 @@ class PostTableViewCell: UITableViewCell {
            ])
        }
        
-       func update(_ model: Menu) {
+    func update(_ model: Post) {
         authorLabel.text = model.author
            descriptionLabel.text = model.description
            image.image = UIImage(named: model.image)

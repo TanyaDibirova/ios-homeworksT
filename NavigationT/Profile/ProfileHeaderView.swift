@@ -90,10 +90,6 @@ class ProfileHeaderView: UIView {
             labelSecond.leadingAnchor.constraint(equalTo: imageCat.trailingAnchor, constant: 16),
             labelSecond.bottomAnchor.constraint(equalTo: muButton.topAnchor, constant: -34)
             
-            
-            
-            
-            
         ])
     }
     
