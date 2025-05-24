@@ -1,10 +1,9 @@
 
 
 import UIKit
-//  import StorageService
+import StorageService
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
     
     fileprivate let menu = Post.make()
     

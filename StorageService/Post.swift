@@ -4,17 +4,17 @@ import UIKit
 
 public struct Post {
     
-    let author: String
-    let description: String
-    let image: String
-    let likes: Int
-    let views: Int
+    public let author: String
+    public let description: String
+    public let image: String
+    public let likes: Int
+    public let views: Int
     
 }
 
-extension Post {
+ public extension Post {
     
-    public static func make() -> [Post] {
+    static func make() -> [Post] {
         [
         
             Post(author: "И.И.Шишкина и К.А.Савицкого",  description: "Утро в сосновом лесу",  image: "forest", likes: 255, views: 259),

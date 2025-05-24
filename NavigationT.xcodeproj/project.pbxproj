@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA16044D2DD9E4ED00CE9AE9 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6DD5AD2DD68B2600215672 /* StorageService.framework */; };
-		FA16044E2DD9E4ED00CE9AE9 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6DD5AD2DD68B2600215672 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FAC53BD82DE10B8300C1AA8B /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6DD5AD2DD68B2600215672 /* StorageService.framework */; };
+		FAC53BD92DE10B8300C1AA8B /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6DD5AD2DD68B2600215672 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FA16044F2DD9E4ED00CE9AE9 /* PBXContainerItemProxy */ = {
+		FAC53BDA2DE10B8300C1AA8B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA87CE112D4E655E0065B7C9 /* Project object */;
 			proxyType = 1;
@@ -22,13 +22,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FA1604512DD9E4ED00CE9AE9 /* Embed Frameworks */ = {
+		FAC53BDC2DE10B8300C1AA8B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FA16044E2DD9E4ED00CE9AE9 /* StorageService.framework in Embed Frameworks */,
+				FAC53BD92DE10B8300C1AA8B /* StorageService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,20 +43,10 @@
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		FA6DD5B52DD68B2700215672 /* Exceptions for "StorageService" folder in "StorageService" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Post.swift,
-			);
 			publicHeaders = (
 				StorageService.h,
 			);
 			target = FA6DD5AC2DD68B2600215672 /* StorageService */;
-		};
-		FA6DD5B72DD68C6200215672 /* Exceptions for "StorageService" folder in "NavigationT" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Post.swift,
-			);
-			target = FA87CE182D4E655E0065B7C9 /* NavigationT */;
 		};
 		FA87CE2B2D4E655F0065B7C9 /* Exceptions for "NavigationT" folder in "NavigationT" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -71,7 +61,6 @@
 		FA6DD5AE2DD68B2600215672 /* StorageService */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FA6DD5B72DD68C6200215672 /* Exceptions for "StorageService" folder in "NavigationT" target */,
 				FA6DD5B52DD68B2700215672 /* Exceptions for "StorageService" folder in "StorageService" target */,
 			);
 			path = StorageService;
@@ -99,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA16044D2DD9E4ED00CE9AE9 /* StorageService.framework in Frameworks */,
+				FAC53BD82DE10B8300C1AA8B /* StorageService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,12 +164,12 @@
 				FA87CE152D4E655E0065B7C9 /* Sources */,
 				FA87CE162D4E655E0065B7C9 /* Frameworks */,
 				FA87CE172D4E655E0065B7C9 /* Resources */,
-				FA1604512DD9E4ED00CE9AE9 /* Embed Frameworks */,
+				FAC53BDC2DE10B8300C1AA8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA1604502DD9E4ED00CE9AE9 /* PBXTargetDependency */,
+				FAC53BDB2DE10B8300C1AA8B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FA87CE1B2D4E655E0065B7C9 /* NavigationT */,
@@ -265,10 +254,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA1604502DD9E4ED00CE9AE9 /* PBXTargetDependency */ = {
+		FAC53BDB2DE10B8300C1AA8B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA6DD5AC2DD68B2600215672 /* StorageService */;
-			targetProxy = FA16044F2DD9E4ED00CE9AE9 /* PBXContainerItemProxy */;
+			targetProxy = FAC53BDA2DE10B8300C1AA8B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
