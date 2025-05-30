@@ -87,6 +87,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         button.layer.shadowRadius = 4.0
         return button
     }()
+    var curentUserInit: UserService?
     
     let logo = UIImage(named: "logo")
     
@@ -118,7 +119,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        
+#if DEBUG
+        curentUserInit = TestUserService(testUser: User(login: "dibirova", fullName: "Test User", avatar: UIImage(named: "2")!, status: "Testing status"))
+#else
+        curentUserInit = CurrentUserService(user: User(login: "tanya8", fullName: "Dibirova Tanya", avatar: UIImage(named: "14")!, status: "Happiness is a state of activity"))
+#endif
         logoImage.image = logo
         addSubviews()
         setupContraints()
@@ -185,11 +190,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func pressed() {
-        let profileView = ProfileViewController()
         
-        self.navigationController?.pushViewController(profileView, animated: true)
-        
-    }
+        guard let login = textField.text else {return}
+                if let user = curentUserInit?.userService(login: login) {
+                    
+                    let profileView = ProfileViewController(user: user)
+                    self.navigationController?.pushViewController(profileView, animated: true)
+                    print("OLA USER ")
+                } else {
+                    
+                    print("user not found in login vc")
+                    let aleart = UIAlertController(title: "Login Wrong", message: "You entered wrong login. Please change it", preferredStyle: .alert)
+                    let action  = UIAlertAction(title: "Change", style: .destructive)
+                    aleart.addAction(action)
+                    present(aleart, animated: true)
+            
+                }
+            }
     
     private func removeKeyboardObservers() {
         let notificationCenter = NotificationCenter.default

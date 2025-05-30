@@ -7,7 +7,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     fileprivate let menu = Menu.make()
-    
+    let headerView = ProfileHeaderView()
     private lazy var tableView: UITableView = {
         let table = UITableView.init(
             frame: .zero,
@@ -40,6 +40,19 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         numberOfRowsInSection section: Int
     ) -> Int {
         menu.count
+    }
+    
+    
+    private var user: User?
+       
+       init(user: User) {
+    
+           self.user = user
+           super.init(nibName: nil, bundle: nil)
+       }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -82,7 +95,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         setupView()
         addSubviews()
-        
         setupConstraints()
         tuneTableView()
         
