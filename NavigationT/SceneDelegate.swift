@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let firstVC = FeedViewController()
        // let secondVC = ProfileViewController()
         let secondVC = LogInViewController()
+        secondVC.loginDelegate = LoginInspector()
       //  let PostVC = PostViewController()
         
         let tabBarController = UITabBarController()

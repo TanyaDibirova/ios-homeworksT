@@ -3,6 +3,8 @@ import UIKit
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    var loginDelegate: LoginViewControllerDelegate?
+    
     private lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +99,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         setupKeyboardObservers()
     }
+    var corentUserInit: UserService?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -127,7 +130,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logoImage.image = logo
         addSubviews()
         setupContraints()
-   //    setupKeyboardObservers()
+        //    setupKeyboardObservers()
         
     }
     
@@ -192,21 +195,50 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @objc func pressed() {
         
         guard let login = textField.text else {return}
-                if let user = curentUserInit?.userService(login: login) {
-                    
-                    let profileView = ProfileViewController(user: user)
-                    self.navigationController?.pushViewController(profileView, animated: true)
-                    print("OLA USER ")
-                } else {
-                    
-                    print("user not found in login vc")
-                    let aleart = UIAlertController(title: "Login Wrong", message: "You entered wrong login. Please change it", preferredStyle: .alert)
-                    let action  = UIAlertAction(title: "Change", style: .destructive)
-                    aleart.addAction(action)
-                    present(aleart, animated: true)
-            
-                }
+        guard let pass = passField.text else {return}
+        guard let deleg = loginDelegate else {return}
+        
+        if deleg.check(login: login, password: pass) {
+            guard let user = curentUserInit?.userService(login: login) else {
+                print("User not found")
+                return
             }
+            print(deleg.check(login: login, password: pass))
+            // guard let login = textField.text else {return}
+            //  if let user = curentUserInit?.userService(login: login) {
+            
+            let profileView = ProfileViewController(user: user)
+            self.navigationController?.pushViewController(profileView, animated: true)
+            print("OLA USER ")
+        } else {
+            
+            print("user not found in login vc")
+            let aleart = UIAlertController(title: "Login Wrong", message: "You entered wrong login. Please change it", preferredStyle: .alert)
+            let action  = UIAlertAction(title: "Change", style: .destructive)
+            aleart.addAction(action)
+            present(aleart, animated: true)
+        }
+        /*
+         guard let login = textField.text else {return}
+         
+         
+         if let user = curentUserInit?.userService(login: login) {
+         
+         let profileView = ProfileViewController(user: user)
+         self.navigationController?.pushViewController(profileView, animated: true)
+         print("OLA USER ")
+         } else {
+         
+         print("user not found in login vc")
+         let aleart = UIAlertController(title: "Login Wrong", message: "You entered wrong login. Please change it", preferredStyle: .alert)
+         let action  = UIAlertAction(title: "Change", style: .destructive)
+         aleart.addAction(action)
+         present(aleart, animated: true)
+         
+         }
+         */
+    }
+    
     
     private func removeKeyboardObservers() {
         let notificationCenter = NotificationCenter.default
@@ -221,5 +253,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 }
+    
+    extension LogInViewController: LoginViewControllerDelegate {
+        func check(login: String, password: String) -> Bool {
+            return ((loginDelegate?.check(login: login, password: password)) != nil)
+        }
+    }
+    
+    
 
 
