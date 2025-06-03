@@ -106,7 +106,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         #else
         view.backgroundColor = .red
         #endif
-        navigationItem.title = "Нетология"
+        navigationItem.title = "Нетологи"
         navigationController?.navigationBar.prefersLargeTitles = false
         
     }
