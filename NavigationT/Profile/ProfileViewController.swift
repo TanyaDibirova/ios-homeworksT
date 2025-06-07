@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             style: .grouped
         )
         table.translatesAutoresizingMaskIntoConstraints = false
-        
         return table
     }()
     
@@ -108,7 +107,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 #endif
         navigationItem.title = "Нетологи"
         navigationController?.navigationBar.prefersLargeTitles = false
-        
     }
     
     private func addSubviews() {
