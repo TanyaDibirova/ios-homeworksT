@@ -23,6 +23,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private lazy var textField: UITextField = { [unowned self] in
         let textField = UITextField()
         textField.placeholder = " Email or phone"
+        textField.text = "dibirova"
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.autocapitalizationType = UITextAutocapitalizationType.none
@@ -40,6 +41,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private lazy var passField: UITextField = { [unowned self] in
         let passF = UITextField()
         passF.placeholder = " Password"
+        passF.text = "8888"
         passF.font = UIFont.systemFont(ofSize: 16)
         passF.autocapitalizationType = UITextAutocapitalizationType.none
         passF.keyboardType = UIKeyboardType.default

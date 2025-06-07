@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FAD9C4B52DCD413F0026C5D9 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CB1012DCBF4A3006EF044 /* StorageService.framework */; };
 		FAD9C4B62DCD413F0026C5D9 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6CB1012DCBF4A3006EF044 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FADAD7122DF3BE7B00DAEFB9 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FADAD7112DF3BE7B00DAEFB9 /* iOSIntPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD9C4B52DCD413F0026C5D9 /* StorageService.framework in Frameworks */,
+				FADAD7122DF3BE7B00DAEFB9 /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +178,7 @@
 			);
 			name = NavigationT;
 			packageProductDependencies = (
+				FADAD7112DF3BE7B00DAEFB9 /* iOSIntPackage */,
 			);
 			productName = NavigationT;
 			productReference = FA87CE192D4E655E0065B7C9 /* NavigationT.app */;
@@ -208,6 +211,9 @@
 			);
 			mainGroup = FA87CE102D4E655E0065B7C9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FADAD7102DF2E8E900DAEFB9 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA87CE1A2D4E655E0065B7C9 /* Products */;
 			projectDirPath = "";
@@ -538,6 +544,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FADAD7102DF2E8E900DAEFB9 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
+			requirement = {
+				branch = imagepublisher;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FADAD7112DF3BE7B00DAEFB9 /* iOSIntPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FADAD7102DF2E8E900DAEFB9 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			productName = iOSIntPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA87CE112D4E655E0065B7C9 /* Project object */;
 }

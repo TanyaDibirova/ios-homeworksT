@@ -44,12 +44,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     private var user: User?
-       
-       init(user: User) {
     
-           self.user = user
-           super.init(nibName: nil, bundle: nil)
-       }
+    init(user: User) {
+        
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -101,11 +101,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func setupView() {
-       #if DEBUG
+#if DEBUG
         view.backgroundColor = .black
-        #else
+#else
         view.backgroundColor = .red
-        #endif
+#endif
         navigationItem.title = "Нетологи"
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -153,9 +153,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             navigationController?.pushViewController(PhotosViewController(), animated: true)
         }}
     
-    
-    
-    /*
+}
+
+
+
+/*
      
      private lazy var profileHeaderView: ProfileHeaderView = {
      let view = ProfileHeaderView()
@@ -192,4 +194,4 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
      }
      
      */
-}
+

@@ -1,9 +1,14 @@
 
 
 import UIKit
+import iOSIntPackage
 
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate {
+    
+    var ImagePublisher = ImagePublisherFacade()
+      var viewModel: [UIImage] = []
+      var photos = Fhotos(imageName:"")
     
     fileprivate lazy var photo: [Fhotos] = Fhotos.make()
     
@@ -25,17 +30,27 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ImagePublisher.subscribe(self)
         setupView()
         setupSubviews()
         setupLayouts()
-
+        let images = Fhotos.make().map { UIImage(named:$0.imageName)! }
+                ImagePublisher.addImagesWithTimer(time: 0.5, repeat: 15, userImages: images)
+            
     }
     
     private func setupView() {
         view.backgroundColor = .systemGray
         title = "Photo Gallery"
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+           ImagePublisher.removeSubscription(for: self)
+       }
+       
+       deinit {
+           ImagePublisher.removeSubscription(for: self)
+       }
     
     private func setupSubviews() {
             setupCollectionView()
@@ -70,7 +85,7 @@ extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int
     ) -> Int {
-        photo.count
+        viewModel.count
     }
     
     func collectionView(
@@ -79,7 +94,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.identifier, for: indexPath) as! PhotosCollectionViewCell
         
         
-        let fhoto = photo[indexPath.row]
+        let fhoto = viewModel[indexPath.row]
         cell.setup(with:fhoto)
         return cell
     }
@@ -148,7 +163,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         ) {
             cell.contentView.backgroundColor = .yellow
         }
-        
+ /*
         func collectionView(
             _ collectionView: UICollectionView,
             didSelectItemAt indexPath: IndexPath
@@ -163,5 +178,12 @@ extension PhotosViewController: UICollectionViewDataSource {
             
             navigationController?.pushViewController(viewController, animated: true)
         }
+  */
 }
- 
+
+extension PhotosViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        viewModel = images
+        collectionView.reloadData()
+    }
+}
