@@ -9,11 +9,11 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private lazy var actionButton: UIButton = {
-           let button = UIButton()
-           button.translatesAutoresizingMaskIntoConstraints = false
-           button.setTitle("Показать сообщение", for: .normal)
-           button.setTitleColor(.systemBlue, for: .normal)
+    private lazy var actionButton: CustomButton = {
+        let button = CustomButton(title: "Показать сообщение", action: showAlert)
+       //    button.translatesAutoresizingMaskIntoConstraints = false
+        //        button.setTitle("Показать сообщение", for: .normal)
+       //    button.setTitleColor(.systemBlue, for: .normal)
            
            return button
        }()
@@ -39,7 +39,7 @@ class InfoViewController: UIViewController {
              actionButton.heightAnchor.constraint(equalToConstant: 44.0),
             
          ])
-        actionButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+    //    actionButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
     }
     
     @objc private func showAlert() {

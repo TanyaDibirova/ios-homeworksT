@@ -33,18 +33,18 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    private lazy var muButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 20
-        button.backgroundColor = .systemBlue
-        button.setTitle("Status", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    private lazy var muButton: CustomButton = {
+        let button = CustomButton(title: "Status", action: buttonPressed)
+   //     button.translatesAutoresizingMaskIntoConstraints = false
+   //     button.layer.cornerRadius = 20
+  //      button.backgroundColor = .systemBlue
+  //      button.setTitle("Status", for: .normal)
+  //      button.setTitleColor(.white, for: .normal)
+  //      button.layer.shadowOffset = CGSize(width: 4, height: 4)
+   //     button.layer.shadowRadius = 4
+   //     button.layer.shadowColor = UIColor.black.cgColor
+   //     button.layer.shadowOpacity = 0.7
+  //      button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
     

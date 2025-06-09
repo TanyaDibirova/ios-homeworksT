@@ -79,20 +79,19 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }()
     
-    private lazy var editButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log in", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = ._4855
-        button.layer.cornerRadius = 10.0
-        button.addTarget (self, action: #selector(pressed), for: .touchUpInside)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowRadius = 4.0
+    private lazy var editButton: CustomButton = {
+        let button = CustomButton(title: "log in", action: pressed)
+    //    button.translatesAutoresizingMaskIntoConstraints = false
+    //    button.setTitle("Log in", for: .normal)
+     //   button.setTitleColor(.white, for: .normal)
+    //    button.backgroundColor = ._4855
+     //   button.layer.cornerRadius = 10.0
+    //    button.addTarget (self, action: #selector(pressed), for: .touchUpInside)
+   //     button.layer.shadowColor = UIColor.black.cgColor
+   //     button.layer.shadowRadius = 4.0
         return button
     }()
     var curentUserInit: UserService?
-    
     let logo = UIImage(named: "logo")
     
     
