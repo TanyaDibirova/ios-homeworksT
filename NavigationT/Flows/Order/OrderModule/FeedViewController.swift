@@ -1,9 +1,3 @@
-//
-//  FeedViewController.swift
-//  NavigationT
-//
-//  Created by MacBook on 01.02.2025.
-//
 
 import UIKit
 
@@ -12,6 +6,7 @@ import UIKit
 class FeedViewController: UIViewController, UITextFieldDelegate {
     
     private let feedModel = FeedModel()
+    let viewModel: FeedVM
     
     private lazy var actionButton: CustomButton = {
         let button = CustomButton(title: "Показать пост", action: buttonPressed)
@@ -68,6 +63,15 @@ class FeedViewController: UIViewController, UITextFieldDelegate {
             let button = CustomButton(title: "ChekPassword", action: checkPasswordButtonAction)
             return button
         }()
+    
+    init(viewModel: FeedVM) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,10 +148,13 @@ class FeedViewController: UIViewController, UITextFieldDelegate {
            }
        }
     @objc func buttonPressed() {
-        let post = Post(title: "Мой пост")
-        let postVC = PostViewController(post: post)
-        postVC.post = post
-        navigationController?.pushViewController(postVC, animated: true)
-       }
-
+        viewModel.onNext?()
+        /*
+         let post = Post(title: "Мой пост")
+         let postVC = PostViewController(post: post)
+         postVC.post = post
+         navigationController?.pushViewController(postVC, animated: true)
+         }
+         */
+    }
 }

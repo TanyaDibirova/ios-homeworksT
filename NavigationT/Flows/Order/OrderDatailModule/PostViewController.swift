@@ -13,7 +13,8 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    var post: Post
+ //   var post: Post
+    let viewModel: PostVM
     
     private lazy var actionButton: UIButton = {
            let button = UIButton()
@@ -24,8 +25,9 @@ class PostViewController: UIViewController {
            return button
        }()
     
-    init(post: Post) {
-        self.post = post
+    init( viewModel: PostVM) {
+     //   self.post = post
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,7 +39,7 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
      
         view.backgroundColor = .systemTeal
-        navigationItem.title = post.title
+     //   navigationItem.title = post.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: actionButton)
         actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         

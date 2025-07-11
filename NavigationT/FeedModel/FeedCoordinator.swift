@@ -1,6 +1,6 @@
 
 import UIKit
-
+/*
 final class FeedCoordinator: ModuleCoordinatable {
     var childCoordinators: [Coordinatable] = []
     
@@ -31,3 +31,4 @@ final class FeedCoordinator: ModuleCoordinatable {
     }
     
 }
+*/

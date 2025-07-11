@@ -1,5 +1,6 @@
 
 
+
 import UIKit
 import StorageService
 
@@ -44,9 +45,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private var user: User?
     
-    init(user: User) {
+    init() {
         
-        self.user = user
+     //   self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -192,4 +193,3 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
      }
      
      */
-

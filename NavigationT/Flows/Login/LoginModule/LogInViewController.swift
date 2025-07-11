@@ -1,9 +1,10 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     var loginDelegate: LoginViewControllerDelegate?
+    var viewModel: LoginVM
     
     private lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -119,6 +120,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentInset.bottom = 0.0
     }
     
+    init(viewModel: LoginVM) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        title = "Home"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -208,7 +219,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             // guard let login = textField.text else {return}
             //  if let user = curentUserInit?.userService(login: login) {
             
-            let profileView = ProfileViewController(user: user)
+            let profileView = ProfileViewController()
             self.navigationController?.pushViewController(profileView, animated: true)
             print("OLA USER ")
         } else {
@@ -255,7 +266,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
 }
     
-    extension LogInViewController: LoginViewControllerDelegate {
+extension LoginVC: LoginViewControllerDelegate {
         func check(login: String, password: String) -> Bool {
             return ((loginDelegate?.check(login: login, password: password)) != nil)
         }
