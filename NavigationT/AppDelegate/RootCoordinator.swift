@@ -1,0 +1,15 @@
+//
+//  RootCoordinator.swift
+//  NavigationT
+//
+//  Created by MacBook on 20.07.2025.
+//
+
+import Foundation
+
+final class RootCoordinator: AppCoordinator {
+    
+    var childs: [AppCoordinator] = []
+    
+    
+}

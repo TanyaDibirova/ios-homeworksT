@@ -8,41 +8,54 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
-
+    var rootcoordinator: AppCoordinator?
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: scene)
         
-        let firstVC = FeedViewController()
-  //      let factory = MyLoginFactory()
-       // let secondVC = ProfileViewController()
-        let secondVC = LogInViewController()
-        secondVC.loginDelegate = LoginInspector()
+        let navigationController = UINavigationController()
+        window.rootViewController = navigationController
         
-      //  let PostVC = PostViewController()
         
-        let tabBarController = UITabBarController()
+        /*
+         let firstVC = FeedViewController()
+         //      let factory = MyLoginFactory()
+         // let secondVC = ProfileViewController()
+         let secondVC = LogInViewController()
+         secondVC.loginDelegate = LoginInspector()
+         
+         //  let PostVC = PostViewController()
+         
+         let tabBarController = UITabBarController()
+         
+         firstVC.tabBarItem = UITabBarItem(title: "Лента пользователя", image: UIImage(systemName: "square.and.pencil"), tag: 0)
+         
+         secondVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), tag: 1)
+         let controllers = [firstVC,secondVC]
+         tabBarController.viewControllers = controllers.map {
+         UINavigationController(rootViewController: $0)
+         }
+         tabBarController.selectedIndex = 1
+         
+         window.rootViewController = tabBarController
+         
+         */
         
-        firstVC.tabBarItem = UITabBarItem(title: "Лента пользователя", image: UIImage(systemName: "square.and.pencil"), tag: 0)
+        self.window = window
     
-        secondVC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.fill"), tag: 1)
-        let controllers = [firstVC,secondVC]
-        tabBarController.viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
-        }
-            tabBarController.selectedIndex = 1
-            
-            window.rootViewController = tabBarController
-            window.makeKeyAndVisible()
-            
-            self.window = window
-        }
+        let appCoordinator = RootCoordinator(childCoordinators: CoordinatorProtokol(), type: .lenta)
+        
+        window.makeKeyAndVisible()
+        appCoordinator.start()
+        
+        
     }
+}
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
