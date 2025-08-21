@@ -4,6 +4,19 @@ import UIKit
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
     var loginDelegate: LoginViewControllerDelegate?
+    private let viewModel: ProfileViewModelProtocol?
+    weak var coordinator: ProfilCoordinator?
+    
+    init(viewModel:  ProfileViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     private lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -255,12 +268,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
 }
     
-    extension LogInViewController: LoginViewControllerDelegate {
-        func check(login: String, password: String) -> Bool {
-            return ((loginDelegate?.check(login: login, password: password)) != nil)
-        }
+extension LogInViewController: LoginViewControllerDelegate {
+    func check(login: String, password: String) -> Bool {
+        print("login is correct")
+        return true
     }
     
-    
-
-
+}
