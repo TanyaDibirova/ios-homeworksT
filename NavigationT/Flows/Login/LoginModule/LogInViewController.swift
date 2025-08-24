@@ -211,7 +211,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let deleg = loginDelegate else {return}
         
         if deleg.check(login: login, password: pass) {
-            guard let user = curentUserInit?.userService(login: login) else {
+            guard (curentUserInit?.userService(login: login)) != nil else {
                 print("User not found")
                 return
             }
