@@ -1,19 +1,14 @@
-//
-//  PostViewController.swift
-//  NavigationT
-//
-//  Created by MacBook on 01.02.2025.
-//
+
 
 import UIKit
 
-   struct Post {
+struct Posts {
        var title: String
    }
 
 class PostViewController: UIViewController {
     
-    var post: Post
+    var posts: Posts
     
     private lazy var actionButton: UIButton = {
            let button = UIButton()
@@ -24,8 +19,8 @@ class PostViewController: UIViewController {
            return button
        }()
     
-    init(post: Post) {
-        self.post = post
+    init(posts: Posts) {
+        self.posts = posts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,7 +32,7 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
      
         view.backgroundColor = .systemTeal
-        navigationItem.title = post.title
+        navigationItem.title = posts.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: actionButton)
         actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
